@@ -168,11 +168,11 @@ int SMTX_print(SMatrixType A[])
 
 		while (i <= A->R[0].value && j <= B->R[0].value)
 		{
-			if (A->R[i].row > B->R[j].row || (A->R[i].row == B->R[j].row && A->R[i].col > B->R[j].col))//L171¡BL173¥Õ¸Ü¤å: ¦pªGA©MB½T©w¬O¤£¦Pªº¦ì¸mªº¸Ü
+			if (A->R[i].row > B->R[j].row || (A->R[i].row == B->R[j].row && A->R[i].col > B->R[j].col))//L171ã€L173ç™½è©±æ–‡: å¦‚æœAå’ŒBç¢ºå®šæ˜¯ä¸åŒçš„ä½ç½®çš„è©±
 				C->R[k++] = B->R[j++];
-			else if (A->R[i].row < B->R[j].row || (A->R[i].row == B->R[j].row && A->R[i].col < B->R[j].col))//L171¡BL173¥Õ¸Ü¤å: ¦pªGA©MB½T©w¬O¤£¦Pªº¦ì¸mªº¸Ü
+			else if (A->R[i].row < B->R[j].row || (A->R[i].row == B->R[j].row && A->R[i].col < B->R[j].col))//L171ã€L173ç™½è©±æ–‡: å¦‚æœAå’ŒBç¢ºå®šæ˜¯ä¸åŒçš„ä½ç½®çš„è©±
 				C->R[k++] = A->R[i++];
-			else//¥Õ¸Ü¤å: Aªº¦ì¸m©MBªº¦ì¸m¬Û¦P ->´N»İ­n°µ¬Û¥[
+			else//ç™½è©±æ–‡: Açš„ä½ç½®å’ŒBçš„ä½ç½®ç›¸åŒ ->å°±éœ€è¦åšç›¸åŠ //
 			{
 				int sum = A->R[i].value + B->R[j].value;
 				if (sum != 0)
@@ -212,7 +212,7 @@ int SMTX_print(SMatrixType A[])
 
 		while (i <= A->R[0].value && j <= B->R[0].value)
 		{
-			if (A->R[i].row > B->R[j].row || (A->R[i].row == B->R[j].row && A->R[i].col > B->R[j].col))//¨S°İÃD //¥éL171~L172ªº¡u·Ó§ÛB¡vÅŞ¿è¡A¦ı¦]¬°¬O¬Û´î¡A¦Ó¦¹¶µA¬°¹s¡A©Ò¥H»İ«a¤W­t¸¹
+			if (A->R[i].row > B->R[j].row || (A->R[i].row == B->R[j].row && A->R[i].col > B->R[j].col))//æ²’å•é¡Œ //ä»¿L171~L172çš„ã€Œç…§æŠ„Bã€é‚è¼¯ï¼Œä½†å› ç‚ºæ˜¯ç›¸æ¸›ï¼Œè€Œæ­¤é …Aç‚ºé›¶ï¼Œæ‰€ä»¥éœ€å† ä¸Šè² è™Ÿ
 			{
 				C->R[k].row = B->R[j].row;
 				C->R[k].col = B->R[j].col;
@@ -221,7 +221,7 @@ int SMTX_print(SMatrixType A[])
 				k++;
 				j++;
 			}
-			else if (A->R[i].row < B->R[j].row || (A->R[i].row == B->R[j].row && A->R[i].col < B->R[j].col))//¨S°İÃD //¥éL173~L174ªº¡u·Ó§ÛB¡vÅŞ¿è
+			else if (A->R[i].row < B->R[j].row || (A->R[i].row == B->R[j].row && A->R[i].col < B->R[j].col))//æ²’å•é¡Œ //ä»¿L173~L174çš„ã€Œç…§æŠ„Bã€é‚è¼¯
 				C->R[k++] = A->R[i++];
 			else
 			{
@@ -263,16 +263,16 @@ int SMTX_transpose(SMatrixType A[], SMatrixType B[])
 	{
 		for (i = 0; i <= num_col; i++)
 		{
-			row_terms[i] = 0; //row_termsªºrow¡A¬O«üBªºrow¡A©Ò¥H¤]´N¬OAªºcol¡C©Ò¥H³o´N¬O¦bºâAªº¨C­Ócol¡A¦U¦Û¦³¦h¤Ö­Óentry¡u¡Aªºªì©l¤Æ¡v
+			row_terms[i] = 0; //row_termsçš„rowï¼Œæ˜¯æŒ‡Bçš„rowï¼Œæ‰€ä»¥ä¹Ÿå°±æ˜¯Açš„colã€‚æ‰€ä»¥é€™å°±æ˜¯åœ¨ç®—Açš„æ¯å€‹colï¼Œå„è‡ªæœ‰å¤šå°‘å€‹entryã€Œï¼Œçš„åˆå§‹åŒ–ã€
 		}
 		for (i = 1; i <= num_terms; i++)
 		{
-			row_terms[A->R[i].col]++; //©µÄòL266¡A¬O¡u¯u¥¿¡v¦bºâ[Aªº¨C­Ócol(a.k.a. Bªºrow)]¡A¦U¦Û¦³¦h¤Ö­Óentry
+			row_terms[A->R[i].col]++; //å»¶çºŒL266ï¼Œæ˜¯ã€ŒçœŸæ­£ã€åœ¨ç®—[Açš„æ¯å€‹col(a.k.a. Bçš„row)]ï¼Œå„è‡ªæœ‰å¤šå°‘å€‹entry
 		}
 		starting_pos[0] = 1;
 		for (i = 1; i < num_col; i++)
 		{
-			starting_pos[i] = starting_pos[i - 1] + row_terms[i - 1]; //­pºâprefixSum(a.k.a. ²Ö¥[)
+			starting_pos[i] = starting_pos[i - 1] + row_terms[i - 1]; //è¨ˆç®—prefixSum(a.k.a. ç´¯åŠ )
 		}
 		for (i = 1; i <= num_terms; i++)
 		{
